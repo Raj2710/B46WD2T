@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from './Card'
 function Dashboard() {
-    let data = [{
+    let [data,setData] = useState([{
         title:"Earnings (Monthly)",
         value:"$5000",
         color:"primary",
@@ -29,7 +29,7 @@ function Dashboard() {
         icon:"fa-comments",
         isProgress:false
     }
-]
+])
   return <>
          <div id="content-wrapper" className="d-flex flex-column">
 <div id="content">
@@ -46,6 +46,7 @@ function Dashboard() {
                 data.map((e,i)=>{
                     return <Card key={i}
                     input={e}
+                    value = {10}
                     />
                 })
             }
