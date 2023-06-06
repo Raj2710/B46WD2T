@@ -14,25 +14,25 @@ function App() {
       name:"Anoop",
       email:"anoop@gmail.com",
       mobile:"919100201",
-      dob:"27/1/1993"
+      dob:"1993-01-23"
     },
     {
       name:"Ajith",
       email:"ajith@gmail.com",
       mobile:"8919989291",
-      dob:"20/3/1998"
+      dob:"1998-08-20"
     },
     {
       name:"Ganesh",
       email:"ganesh@gmail.com",
       mobile:"80989019801",
-      dob:"12/12/2000"
+      dob:"2000-12-12"
     },
     {
       name:"Gokul",
       email:"gokul@gmail.com",
       mobile:"782718189",
-      dob:"9/9/2001"
+      dob:"2001-09-09"
     }
   ])
   return <>
