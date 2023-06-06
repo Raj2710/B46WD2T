@@ -48,7 +48,7 @@ function AddUser({users,setUsers}) {
         setMobile(users[params.id].mobile)
         setDob(users[params.id].dob)
     }
-  },[])
+  },[params.id,users])//dependancy array added to remove the warning. But not mandatory
 
   return <>
     <div className='container-fluid'>
