@@ -1,38 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Card from './Card'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-function Dashboard({users,setUsers}) {
-    let [data,setData] = useState([{
-        title:"Earnings (Monthly)",
-        value:"$5000",
-        color:"primary",
-        icon:"fa-calendar",
-        isProgress:false
-    },
-    {
-        title:"Earnings (Annual)",
-        value:"$60000",
-        color:"success",
-        icon:"fa-dollar-sign",
-        isProgress:false
-    },
-    {
-        title:"Task",
-        value:"90",
-        color:"info",
-        icon:"fa-clipboard-list",
-        isProgress:true
-    },
-    {
-        title:"Pending Request",
-        value:"18",
-        color:"warning",
-        icon:"fa-comments",
-        isProgress:false
-    }
-])
+import { UsersContext } from '../context/UserContextComponent';
+import { DashboardContext } from '../context/DashboardContextComponent';
+function Dashboard() {
+    let userContext = useContext(UsersContext)
+    let dashboardContext = useContext(DashboardContext)
     let navigate = useNavigate()
     // let handleDelete = (i)=>{
     //     let newArray = [...users]
@@ -52,7 +27,7 @@ function Dashboard({users,setUsers}) {
 
         <div className="row">
             {
-                data.map((e,i)=>{
+                dashboardContext.data.map((e,i)=>{
                     return <Card key={i}
                     input={e}
                     value = {10}
@@ -74,7 +49,7 @@ function Dashboard({users,setUsers}) {
       </thead>
       <tbody>
          {
-            users.map((e,i)=>{
+            userContext.users.map((e,i)=>{
                 return <tr key={i}>
                     <td>{i+1}</td>
                     <td>{e.name}</td>
@@ -85,9 +60,9 @@ function Dashboard({users,setUsers}) {
                         <Button variant='primary' onClick={()=>navigate(`/edit-user/${i}`)}>Edit</Button>
                         &nbsp;&nbsp;
                         <Button variant='danger' onClick={()=>{
-                            let newArray = [...users]
+                            let newArray = [...userContext.users]
                             newArray.splice(i,1)
-                            setUsers(newArray)
+                            userContext.setUsers(newArray)
                         }}>Delete</Button>
                     </td>
                 </tr>
