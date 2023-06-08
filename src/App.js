@@ -10,6 +10,10 @@ import ResetPassword from "./component/ResetPassword";
 import React from "react";
 import UserContextComponent from "./context/UserContextComponent"
 import DashboardContextComponent from "./context/DashboardContextComponent";
+import Hooks from "./component/Hooks/Hooks";
+import UseRef from "./component/Hooks/UseRef";
+import UseMemo from "./component/Hooks/UseMemo";
+import UseReducer from "./component/Hooks/UseReducer";
 
 function App() {
   return <>
@@ -38,6 +42,11 @@ function App() {
               <Route path='reset-password' element={<ResetPassword/>}/>
           </Route>
           <Route path="/pending-request" element={<PendingRequest/>}/>
+          <Route path="/hooks" element={<Hooks/>}>
+              <Route path='useref' element={<UseRef/>}/>
+              <Route path='usememo' element={<UseMemo/>}/>
+              <Route path="usereducer" element={<UseReducer/>}/>
+          </Route>
           <Route path="/task" element={<Task/>}/>
           <Route path="*" element={<Navigate to='/dashboard'/>}/>
         </Routes>

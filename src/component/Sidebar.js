@@ -1,7 +1,10 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 import { Link,useNavigate } from 'react-router-dom'
+import { UseLogout } from './Hooks/UseLogout'
 
 function Sidebar() {
+    let logout = UseLogout()
     let navigate = useNavigate()
   return <>
     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -55,12 +58,12 @@ function Sidebar() {
 </li>
 </Link>
 
-<Link to='/pending-request'>
+<Link to='/hooks'>
 <li className="nav-item">
     <div className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
         <i className="fa-solid fa-rotate"></i>
-        <span>Pending Request</span>
+        <span>Hooks</span>
     </div>
 </li>
 </Link>
@@ -73,7 +76,9 @@ function Sidebar() {
         <span>Task</span>
     </div>
 </li>
+<Button variant='danger' onClick={logout}>Logout</Button>
 </ul>
+
   </>
 }
 
