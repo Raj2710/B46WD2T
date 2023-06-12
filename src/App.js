@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NavBar from './components/NavBar'
+import CreateBlog from './components/CreateBlog'
+import ManageBlogs from './components/ManageBlogs'
+import Home from './components/Home'
+import EditBlog from './components/EditBlog'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return <>
+  <BrowserRouter>
+    <div>
+      <NavBar/>
     </div>
-  );
+    <div className="container-fluid">
+      <Routes>
+          <Route path="/create" element={<CreateBlog/>}/>
+          <Route path="/manage" element={<ManageBlogs/>}/>
+          <Route path="/edit/:id" element={<EditBlog/>}/>
+          <Route path="/*" element={<Home/>}/>
+      </Routes>
+    </div>
+    </BrowserRouter>
+  </>
 }
 
 export default App;
