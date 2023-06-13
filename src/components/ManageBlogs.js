@@ -2,6 +2,8 @@ import React,{useEffect,useState} from 'react'
 import Table from 'react-bootstrap/Table';
 import { API_URL } from '../index';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify'
+import CheckBox from './common/CheckBox';
 import axios from 'axios';
 
 function ManageBlogs() {
@@ -16,6 +18,7 @@ function ManageBlogs() {
       if(res.status===200)
       {
         setBlogs(res.data)
+        // toast.success("Blogs fetched Successfully!")
       }
     } catch (error) {
       alert(error)
@@ -34,11 +37,24 @@ function ManageBlogs() {
     }
   }
 
+  let handleStatusChange = async (id,status)=>{
+    try {
+      let res = await axios.put(`${API_URL}/${id}`,{
+        active_flag:status
+      })
+      if(res.status===200)
+      {
+        getData()
+      }
+    } catch (error) {
+      alert(error)
+    }
+  }
   useEffect(()=>{
     getData()
   },[])
   return <>
-    <div>
+    <div className='main-content'>
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -58,7 +74,7 @@ function ManageBlogs() {
             <td>{e.title}</td>
             <td><Description content={e.description}/></td>
             <td><Image imageUrl={e.imageUrl}/></td>
-            <td>{`${e.active_flag}`}</td>
+            <td><CheckBox id={e.id} status={e.active_flag} onStatusChange={handleStatusChange}/></td>
             <td><Action id={e.id} onDelete={handleDelete}/></td>
           </tr>
         })
@@ -84,7 +100,7 @@ function Description({content})
 {
   return <div className='description-wrapper'>
     <div className='description'>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate reprehenderit ex quaerat iure consequuntur ipsum animi eius et quam! Consequuntur, quaerat officiis! Fuga iure fugit in! Dolor commodi dignissimos officiis!
+      {content}
     </div>
     </div>
 }

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
   let navigate = useNavigate()
-  return <>
+  return <div className='nav-wrapper'>
     <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">Blog App</Navbar.Brand>
@@ -17,7 +17,7 @@ function NavBar() {
           </Nav>
         </Container>
       </Navbar>
-  </>
+  </div>
 }
 
 export default NavBar
