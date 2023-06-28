@@ -3,7 +3,7 @@ const app = express()
 const indexRouter = require('./rotues/index')
 const userRouter = require('./rotues/users')
 const dashboardRouter = require('./rotues/dashboard')
-const PORT = process.env.port || 8000
+const PORT = process.env.PORT || 8000
 
 app.use(express.json())//to parse the body.
 //example to show to handle multiple routes
