@@ -54,9 +54,9 @@ function Dashboard() {
                 return <tr key={e._id}>
                     <td>{i+1}</td>
                     <td>{e.name}</td>
-                    <td>{e.emial}</td>
+                    <td>{e.email}</td>
                     <td>{e.mobile}</td>
-                    <td>{e.status}</td>
+                    <td>{e.status.toString()}</td>
                     <td>{e.createdAt}</td>
                 </tr>
             })
