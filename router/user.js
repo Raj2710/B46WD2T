@@ -127,7 +127,6 @@ router.post('/change-password/:id', validate, async (req,res)=>{
     }
 })
 
-
 router.get('/:id',validate,async (req,res)=>{
     try {
         let data = await UserModel.findById(req.params.id)
